@@ -1,0 +1,113 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: #8680dc;
+}
+
+#root {
+    height: 100%;
+}
+
+.App {
+    display: flex;
+    background-color: #8680dc;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+/*    --    All the styles    --    */
+
+.metamask-form #ens-status-wrapper {
+    margin-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #d4d1e8;
+    border-radius: 10px;
+    color: #6963b3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.metamask-form #pa-status-wrapper {
+    margin-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #d4d1e8;
+    border-radius: 10px;
+    color: #6963b3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.metamask-form .available {
+    margin-top: 15px;
+    padding-left: 10px;
+    border-radius: 10px;
+    background-color: #c9e8bd;
+    color: #348432;
+}
+
+.metamask-form .unavailable {
+    margin-top: 15px;
+    padding-left: 10px;
+    border-radius: 10px;
+    background-color: #e8b0b4;
+    color: #b3323b;
+}
+
+.metamask-form {
+    font-family: Montserrat;
+    font-weight: lighter;
+    box-shadow: #333333;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+    width: 300px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.metamask-form .form-header {
+    text-align: center;
+}
+
+.metamask-form input {
+    font-family: Montserrat;
+    height: 20px;
+    background-color: #dddddd;
+    outline:none;
+    font-size: 20px;
+    padding: 15px;
+    border: none;
+    border-color: #aaaaaa;
+    border-radius: 4px;
+}
+
+.metamask-form ::placeholder {
+    color: #aaaaaa;
+    opacity: 1;
+}
+
+.metamask-form .tenzorum-logo {
+    width: 90px;
+    height: 90px;
+    margin: 15px;
+}
+
+.metamask-form #submit-button {
+    font-family: Montserrat;
+    outline:none;
+    font-weight: lighter;
+    height: 50px;
+    background-color: #FC1272;
+    border-radius: 4px;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor:pointer;
+}

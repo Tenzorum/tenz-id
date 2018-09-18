@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+    <script src="http://rawgit.com/ethereum/web3.js/0.16.0/dist/web3.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ethjs@0.3.4/dist/ethjs.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <title>Tenzorum</title>
+</head>
+<body>
+    <noscript>
+        Life isn't fun without JavaScript 🤷
+    </noscript>
+    <script src="index.js">
+
+    </script>
+
+    <div class="tenzorum-wrapper">
+        <div class="metamask-form">
+            <div class="form-header">
+                <img src="logo_tenz.png" alt="tenzorum logo" class="tenzorum-logo"/>
+                <p>Hey there! Remember that his username can't be changed as it will be associated to your ETH address.</p>
+            </div>
+            <h3>👩‍🚀 Username</h3>
+            <input type="text" class="tenz-ens" placeholder="vivibuterin" oninput="checkENS(this.value)"/>
+            <div id="ens-status-wrapper">
+                <p>Enter a valid username</p>
+            </div>
+            <h3>📫 ETH address</h3>
+            <input type="text" id="public-address" placeholder="0x....." oninput="checkPublicAddress(this.value)"/>
+            <div id="pa-status-wrapper">
+                <p>Enter a valid public address</p>
+            </div>
+            <br/>
+            <br/>
+            <button id="submit-button" disabled>Register ID</button>
+        </div>
+    </div>
+</body>
+</html>
+
+
