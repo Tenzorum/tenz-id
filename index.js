@@ -1,6 +1,316 @@
-const factoryAbi =[{"constant":false,"inputs":[{"name":"_topLevelDomain","type":"string"},{"name":"_subDomain","type":"string"},{"name":"_owner","type":"address"},{"name":"_target","type":"address"}],"name":"newSubdomain","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"creator","type":"address"},{"indexed":true,"name":"owner","type":"address"},{"indexed":false,"name":"domain","type":"string"},{"indexed":false,"name":"subdomain","type":"string"}],"name":"SubdomainCreated","type":"event"},{"constant":true,"inputs":[{"name":"_subDomain","type":"string"},{"name":"_topLevelDomain","type":"string"}],"name":"subDomainOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"}];
+const factoryAbi = [
+  {
+    "anonymous": false,
+    "inputs": [],
+    "name": "DomainTransfersLocked",
+    "type": "event"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "lockDomainOwnershipTransfers",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_subdomain",
+        "type": "string"
+      },
+      {
+        "name": "_domain",
+        "type": "string"
+      },
+      {
+        "name": "_topdomain",
+        "type": "string"
+      },
+      {
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "name": "_target",
+        "type": "address"
+      }
+    ],
+    "name": "newSubdomain",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_owner",
+        "type": "address"
+      }
+    ],
+    "name": "transferContractOwnership",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_node",
+        "type": "bytes32"
+      },
+      {
+        "name": "_owner",
+        "type": "address"
+      }
+    ],
+    "name": "transferDomainOwnership",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "creator",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "subdomain",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "name": "domain",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "name": "topdomain",
+        "type": "string"
+      }
+    ],
+    "name": "SubdomainCreated",
+    "type": "event"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_registry",
+        "type": "address"
+      }
+    ],
+    "name": "updateRegistry",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "previousResolver",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "newResolver",
+        "type": "address"
+      }
+    ],
+    "name": "ResolverUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "previousRegistry",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "newRegistry",
+        "type": "address"
+      }
+    ],
+    "name": "RegistryUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "name": "_registry",
+        "type": "address"
+      },
+      {
+        "name": "_resolver",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_resolver",
+        "type": "address"
+      }
+    ],
+    "name": "updateResolver",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_domain",
+        "type": "string"
+      },
+      {
+        "name": "_topdomain",
+        "type": "string"
+      }
+    ],
+    "name": "domainOwner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "locked",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "registry",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "resolver",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_subdomain",
+        "type": "string"
+      },
+      {
+        "name": "_domain",
+        "type": "string"
+      },
+      {
+        "name": "_topdomain",
+        "type": "string"
+      }
+    ],
+    "name": "subdomainOwner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  }
+];
 const emptyAddress = '0x0000000000000000000000000000000000000000'
-const factoryAddress = "0xf9fa2ff44a474b6d20500969bda61c2827fbc6b6"
+const factoryAddress = "0x128f9f878a5e1ba33cdcc3431c5b6068a0524071"
 let currentAccount;
 let ensName;
 let ensAddress;
@@ -47,7 +357,8 @@ function startApp(web3) {
       alert("Unlock or setup your metamask")
     }
   })
-  ensContract = eth.contract(factoryAbi).at( factoryAddress)
+  ensContract = eth.contract(factoryAbi).at(factoryAddress)
+  console.log(ensContract)
 }
 
 function checkENS(input) {
@@ -60,7 +371,7 @@ function checkENS(input) {
     return;
   }
   ensName = input.toLowerCase();
-  ensContract.subDomainOwner(input, 'tenz-id')
+  ensContract.subdomainOwner(input, 'tenz-id', 'xyz')
     .then(function (addr) {
       if(addr[0] === emptyAddress){
         $('#ens-status-wrapper').html("It's available! Go for it tiger!");
@@ -127,7 +438,7 @@ function listenForClicks () {
   var button = document.getElementById('register-tenz-id-button');
   button.addEventListener('click', function() {
     console.log('ENS NAME: ', ensName)
-    ensContract.newSubdomain(ensName, 'tenz-id', currentAccount, currentAccount, {from: currentAccount})
+    ensContract.newSubdomain(ensName, 'tenz-id', 'xyz', currentAccount, currentAccount, {from: currentAccount})
       .then((txHash) => {
         localStorage.setItem('ensName', ensName);
         localStorage.setItem('txHash', txHash);
