@@ -28,9 +28,7 @@ window.addEventListener('load', function() {
     startApp(web3);
     //alert("Web3");
   } else {
-    if (window.confirm('You need to install metamask or use a mobile wallet Dapp browser to use tenz-id. Click OK to download metamask')) {
-      window.open('https://metamask.io', '_blank')
-    }
+    alert('You need metamask or use a mobile wallet Dapp browser to use tenz-id. Download from https://metamask.io');
   }
 })
 
@@ -76,6 +74,14 @@ function checkENS(input) {
         $('#ens-status-wrapper').html("You have claimed this already!");
         $('#ens-status-wrapper').css('background-color', '#d4d1e8');
         $('#ens-status-wrapper').css('color', '#6963b3');
+        $('#ens-status-wrapper').css('margin-top', '15px');
+        $('#ens-status-wrapper').css('padding', '10px');
+        $('#ens-status-wrapper').css('border-radius', '10px');
+        $("#submit-button").attr("disabled", true);
+      } else if(addr[0] === '0x') {
+        $('#ens-status-wrapper').html("Switch to mainnet");
+        $('#ens-status-wrapper').css('background-color', '#e8b0b4');
+        $('#ens-status-wrapper').css('color', '#b3323b');
         $('#ens-status-wrapper').css('margin-top', '15px');
         $('#ens-status-wrapper').css('padding', '10px');
         $('#ens-status-wrapper').css('border-radius', '10px');

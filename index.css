@@ -111,3 +111,7 @@ body {
     font-size: 20px;
     cursor:pointer;
 }
+
+.metamask-form #submit-button:hover {
+    background-color: #6963b3;
+}
