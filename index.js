@@ -7,28 +7,29 @@ let ensAddress;
 let ensContract;
 
 window.addEventListener('load', function() {
-  // Check if Web3 has been injected by the browser:
-  if (typeof web3 !== 'undefined') {
-    web3.version.getNetwork((err, netId) => {
-      switch (netId) {
-        case "1":
-          console.log('This is mainnet')
-          break
-        case "2":
-          alert("Switch to mainnet on your wallet")
-          break
-        case "3":
-          alert("Switch to mainnet on your wallet")
+  if(window.location.href.indexOf("tenz_id") > -1) {
+    if (typeof web3 !== 'undefined') {
+      web3.version.getNetwork((err, netId) => {
+        switch (netId) {
+          case "1":
+            console.log('This is mainnet')
+            break
+          case "2":
+            alert("Switch to mainnet on your wallet")
+            break
+          case "3":
+            alert("Switch to mainnet on your wallet")
 
-          break
-        default:
-          alert("Switch to mainnet on your wallet")
-      }
-    })
-    startApp(web3);
-    //alert("Web3");
-  } else {
-    alert('You need metamask or use a mobile wallet Dapp browser to use tenz-id. Download from https://metamask.io');
+            break
+          default:
+            alert("Switch to mainnet on your wallet")
+        }
+      })
+      startApp(web3);
+      //alert("Web3");
+    } else {
+      alert('You need metamask or use a mobile wallet Dapp browser to use tenz-id. Download from https://metamask.io');
+    }
   }
 })
 
