@@ -140,6 +140,6 @@ function listenForClicks () {
 }
 
 function confirm() {
-  $('#updateh1').html(`Congratulations ${localStorage.ensName} ! You have successfully claimed your TENZ-ID: ${localStorage.ensName}.tenz-id.xyz 🎉`);
-  $('#updateh2').html(`Although its immutabily stored in the Ethereum Blockchain and can be viewed <a href="https://ropsten.etherscan.io/tx/${localStorage.txHash}">here</a>`);
+  $('#updateh1 > span').html(`Congratulations ${localStorage.ensName} ! You have successfully claimed your TENZ-ID: ${localStorage.ensName}.tenz-id.xyz 🎉`);
+  $('#updateh2 > p').html(`Although its immutabily stored in the Ethereum Blockchain and can be viewed <a href="https://ropsten.etherscan.io/tx/${localStorage.txHash}">here</a>`);
 }
