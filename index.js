@@ -30,6 +30,8 @@ window.addEventListener('load', function() {
     } else {
       alert('You need metamask or use a mobile wallet Dapp browser to use tenz-id. Download from https://metamask.io');
     }
+  } else if(window.location.href.indexOf("confirmation") > -1) {
+    confirm()
   }
 })
 
@@ -127,6 +129,17 @@ function listenForClicks () {
   var button = document.getElementById('submit-button');
   button.addEventListener('click', function() {
     console.log('ENS NAME: ', ensName)
-    ensContract.newSubdomain(ensName, 'tenz-id', currentAccount, currentAccount, {from: currentAccount}).then(console.log).catch(console.log)
+    ensContract.newSubdomain(ensName, 'tenz-id', currentAccount, currentAccount, {from: currentAccount})
+      .then((txHash) => {
+        localStorage.setItem('ensName', JSON.stringify(ensName));
+        localStorage.setItem('txHash', JSON.stringify(txHash));
+        window.location = 'https://tenzorum.org/confirmation'
+      })
+      .catch(console.log)
   })
+}
+
+function confirm() {
+  $('span.uabb-heading-text').html(`Congratulations ${localStorage.ensName} ! You have successfully claimed your TENZ-ID: ${localStorage.ensName}.tenz-id.xyz 🎉`);
+  $('div.uabb-subheading > p').html(`Although its immutabily stored in the Ethereum Blockchain and can be viewed <a href="https://ropsten.etherscan.io/tx/${localStorage.txHash}">here</a>`);
 }
