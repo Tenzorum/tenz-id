@@ -78,7 +78,7 @@ function checkENS(input) {
         $('#ens-status-wrapper').css('margin-top', '15px');
         $('#ens-status-wrapper').css('padding', '10px');
         $('#ens-status-wrapper').css('border-radius', '10px');
-        $("#submit-button").attr("disabled", true);
+        $("#register-tenz-id-button").attr("disabled", true);
       } else if(addr[0] === '0x') {
         $('#ens-status-wrapper').html("Switch to mainnet");
         $('#ens-status-wrapper').css('background-color', '#e8b0b4');
@@ -124,7 +124,7 @@ function checkPublicAddress(input) {
 }
 
 function listenForClicks () {
-  var button = document.getElementById('submit-button');
+  var button = document.getElementById('register-tenz-id-button');
   button.addEventListener('click', function() {
     console.log('ENS NAME: ', ensName)
     ensContract.newSubdomain(ensName, 'tenz-id', currentAccount, currentAccount, {from: currentAccount})
