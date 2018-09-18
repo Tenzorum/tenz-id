@@ -30,7 +30,7 @@ window.addEventListener('load', function() {
       alert('You need metamask or use a mobile wallet Dapp browser to use tenz-id. Download from https://metamask.io');
     }
   } else if(window.location.href.indexOf("confirmation") > -1) {
-    confirm()
+    confirmationPageTenz()
   }
 })
 
@@ -137,7 +137,7 @@ function listenForClicks () {
   })
 }
 
-function confirm() {
+function confirmationPageTenz() {
   $('#updateh1 > div > div > h1 > span').html(`Congratulations ${localStorage.ensName} ! You have successfully claimed your TENZ-ID: ${localStorage.ensName}.tenz-id.xyz 🎉`);
   $('#update2 > div > div >  h3 > span').html(`Although its immutabily stored in the Ethereum Blockchain and can be viewed <a href="https://ropsten.etherscan.io/tx/${localStorage.txHash}" target="_blank">here</a>`);
 }
