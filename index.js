@@ -358,7 +358,6 @@ function startApp(web3) {
     }
   })
   ensContract = eth.contract(factoryAbi).at(factoryAddress)
-  console.log(ensContract)
 }
 
 function checkENS(input) {
@@ -437,7 +436,6 @@ function checkPublicAddress(input) {
 function listenForClicks () {
   var button = document.getElementById('register-tenz-id-button');
   button.addEventListener('click', function() {
-    console.log('ENS NAME: ', ensName)
     ensContract.newSubdomain(ensName, 'tenz-id', 'xyz', currentAccount, currentAccount, {from: currentAccount})
       .then((txHash) => {
         localStorage.setItem('ensName', ensName);
