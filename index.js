@@ -57,7 +57,7 @@ function checkENS(input) {
     $('#ens-status-wrapper').css('background-color', '#d4d1e8');
     $('#ens-status-wrapper').css('color', '#6963b3');
     $('#ens-status-wrapper').html("Enter a valid username");
-    $("#submit-button").attr("disabled", true);
+    $("#register-tenz-id-button").attr("disabled", true);
     return;
   }
   ensName = input.toLowerCase();
@@ -71,8 +71,8 @@ function checkENS(input) {
         $('#ens-status-wrapper').css('margin-top', '15px');
         $('#ens-status-wrapper').css('padding', '10px');
         $('#ens-status-wrapper').css('border-radius', '10px');
-        $('#submit-button').css('border-radius', '10px');
-        $("#submit-button").attr("disabled", false);
+        $('#register-tenz-id-button').css('border-radius', '10px');
+        $("#register-tenz-id-button").attr("disabled", false);
       } else if(addr[0] === currentAccount) {
         $('#ens-status-wrapper').html("You have claimed this already!");
         $('#ens-status-wrapper').css('background-color', '#d4d1e8');
@@ -88,7 +88,7 @@ function checkENS(input) {
         $('#ens-status-wrapper').css('margin-top', '15px');
         $('#ens-status-wrapper').css('padding', '10px');
         $('#ens-status-wrapper').css('border-radius', '10px');
-        $("#submit-button").attr("disabled", true);
+        $("#register-tenz-id-button").attr("disabled", true);
       } else {
         $('#ens-status-wrapper').html("Oops! Already owned by: " + addr[0]);
         $('#ens-status-wrapper').css('background-color', '#e8b0b4');
@@ -96,7 +96,7 @@ function checkENS(input) {
         $('#ens-status-wrapper').css('margin-top', '15px');
         $('#ens-status-wrapper').css('padding', '10px');
         $('#ens-status-wrapper').css('border-radius', '10px');
-        $("#submit-button").attr("disabled", true);
+        $("#register-tenz-id-button").attr("disabled", true);
       }
     })
     .catch(console.error)
@@ -110,7 +110,7 @@ function checkPublicAddress(input) {
     $('#pa-status-wrapper').css('margin-top', '15px');
     $('#pa-status-wrapper').css('padding', '10px');
     $('#pa-status-wrapper').css('border-radius', '10px');
-    $("#submit-button").attr("disabled", true);
+    $("#register-tenz-id-button").attr("disabled", true);
     return false;
   } else if (/^(0x)?[0-9a-f]{40}$/.test(input) || /^(0x)?[0-9A-F]{40}$/.test(input)) {
     $('#pa-status-wrapper').html("Valid address");
@@ -119,7 +119,7 @@ function checkPublicAddress(input) {
     $('#pa-status-wrapper').css('margin-top', '15px');
     $('#pa-status-wrapper').css('padding', '10px');
     $('#pa-status-wrapper').css('border-radius', '10px');
-    $("#submit-button").attr("disabled", true);
+    $("#register-tenz-id-button").attr("disabled", true);
     return true;
   }
   ensAddress = input;
@@ -141,5 +141,5 @@ function listenForClicks () {
 
 function confirm() {
   $('#updateh1 > div > div > h1 > span').html(`Congratulations ${localStorage.ensName} ! You have successfully claimed your TENZ-ID: ${localStorage.ensName}.tenz-id.xyz 🎉`);
-  $('#updateh2 > div > div >  p').html(`Although its immutabily stored in the Ethereum Blockchain and can be viewed <a href="https://ropsten.etherscan.io/tx/${localStorage.txHash}">here</a>`);
+  $('#updateh2 > div > div >  p').html(`Although its immutabily stored in the Ethereum Blockchain and can be viewed <a href="https://ropsten.etherscan.io/tx/${localStorage.txHash}" target="_blank">here</a>`);
 }

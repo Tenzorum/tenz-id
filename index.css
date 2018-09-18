@@ -99,7 +99,7 @@ body {
     margin: 15px;
 }
 
-.metamask-form #submit-button {
+.metamask-form #register-tenz-id-button {
     font-family: Montserrat;
     outline:none;
     font-weight: lighter;
@@ -112,6 +112,6 @@ body {
     cursor:pointer;
 }
 
-.metamask-form #submit-button:hover {
+.metamask-form #register-tenz-id-button:hover {
     background-color: #6963b3;
 }
