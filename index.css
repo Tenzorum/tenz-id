@@ -21,6 +21,18 @@ body {
 
 /*    --    All the styles    --    */
 
+.metamask-form {
+    font-family: Montserrat;
+    box-shadow: #333333;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+    width: 300px;
+    background-color: white;
+    border-radius: 20px;
+}
+
 .metamask-form #ens-status-wrapper {
     margin-top: 15px;
     padding-left: 10px;
@@ -59,19 +71,6 @@ body {
     color: #b3323b;
 }
 
-.metamask-form {
-    font-family: Montserrat;
-    font-weight: lighter;
-    box-shadow: #333333;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    height: 700px;
-    width: 300px;
-    background-color: white;
-    border-radius: 20px;
-}
-
 .metamask-form .form-header {
     text-align: center;
 }
@@ -102,7 +101,6 @@ body {
 .metamask-form #register-tenz-id-button {
     font-family: Montserrat;
     outline:none;
-    font-weight: lighter;
     height: 50px;
     background-color: #FC1272;
     border-radius: 4px;
