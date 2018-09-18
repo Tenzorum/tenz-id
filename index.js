@@ -139,5 +139,5 @@ function listenForClicks () {
 
 function confirmationPageTenz() {
   $('#updateh1 > div > div > h1 > span').html(`Congratulations ${localStorage.ensName} ! You have successfully claimed your TENZ-ID: <br/> 🎉${localStorage.ensName}.tenz-id.xyz 🎉`);
-  $('#update2 > div > div >  h3 > span').html(`Although its immutabily stored in the Ethereum Blockchain and can be viewed <b><u><a href="https://ropsten.etherscan.io/tx/${localStorage.txHash}" target="_blank">HERE</a></u></b>`);
+  $('#update2 > div > div >  h3 > span').html(`Although its immutabily stored in the Ethereum Blockchain and can be viewed <a href="https://ropsten.etherscan.io/tx/${localStorage.txHash}" target="_blank"><b><u>HERE</u></b></a>`);
 }
