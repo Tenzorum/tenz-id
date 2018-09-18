@@ -29,7 +29,7 @@ window.addEventListener('load', function() {
     //alert("Web3");
   } else {
     if (window.confirm('You need to install metamask or use a mobile wallet Dapp browser to use tenz-id. Click OK to download metamask')) {
-      window.location.href='https://metamask.io';
+      window.open('https://metamask.io', '_blank')
     }
   }
 })
