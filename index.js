@@ -435,6 +435,7 @@ function checkPublicAddress(input) {
 
 function listenForClicks () {
   var button = document.getElementById('register-tenz-id-button');
+  var twitterButton = document.getElementById('twitter-tenzorum-button');
   button.addEventListener('click', function() {
     ensContract.newSubdomain(ensName, 'tenz-id', 'xyz', currentAccount, currentAccount, {from: currentAccount})
       .then((txHash) => {
@@ -443,6 +444,9 @@ function listenForClicks () {
         window.location = 'https://tenzorum.org/confirmation'
       })
       .catch(console.log)
+  })
+  twitterButton.addEventListener('click', function() {
+    window.open('http://twitter.com/share?text=Wah gwan my youth. Represent the most high, I and I with a share pon d tweetah &url=https://tenzorum.org/tenz_id&hashtags=blockchain,tenzorum&\n')
   })
 }
 
