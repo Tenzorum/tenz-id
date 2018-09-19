@@ -435,7 +435,6 @@ function checkPublicAddress(input) {
 
 function listenForClicks () {
   var button = document.getElementById('register-tenz-id-button');
-  var twitterButton = document.getElementById('twitter-tenzorum-button');
   button.addEventListener('click', function() {
     ensContract.newSubdomain(ensName, 'tenz-id', 'xyz', currentAccount, currentAccount, {from: currentAccount})
       .then((txHash) => {
@@ -445,12 +444,16 @@ function listenForClicks () {
       })
       .catch(console.log)
   })
-  twitterButton.addEventListener('click', function() {
-    window.open('http://twitter.com/share?text=Wah gwan my youth. Represent the most high, I and I with a share pon d tweetah &url=https://tenzorum.org/tenz_id&hashtags=blockchain,tenzorum&\n')
-  })
 }
 
 function confirmationPageTenz() {
+  // $('.ua-icon.ua-icon-twitter-2').click(function() {
+  //   window.open('http://twitter.com/share?text=Wah gwan my youth. Represent the most high, I and I with a share pon d tweetah &url=https://tenzorum.org/tenz_id&hashtags=blockchain,tenzorum&\n')
+  // })
+  var twitterButton = document.getElementById('twitter-tenzorum-button');
+  twitterButton.addEventListener('click', function() {
+    window.open('http://twitter.com/share?text=Wah gwan my youth. Represent the most high, I and I with a share pon d tweetah &url=https://tenzorum.org/tenz_id&hashtags=blockchain,tenzorum&\n')
+  })
   $('#updateh1 > div > div > h1 > span').html(`Congratulations ${localStorage.ensName} ! You have successfully claimed your TENZ-ID: <br/> 🎉${localStorage.ensName}.tenz-id.xyz 🎉`);
   $('#update2 > div > div >  h3 > span').html(`👉 It's immutabily stored in the Ethereum Blockchain and can be viewed <a href="https://ropsten.etherscan.io/tx/${localStorage.txHash}" target="_blank"><b><u>HERE</u></b></a>`);
 }
