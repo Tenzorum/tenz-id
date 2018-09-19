@@ -183,8 +183,8 @@ function confirmationPageTenz() {
   var twitterButton = document.getElementById('twitter-tenzorum-button');
   twitterButton.addEventListener('click', function() {
     // Change this to tweet a different message, after text=put message here after &url=put url here after &hashtags=put hashtags here
-    window.open('http://twitter.com/share?text=I just got my tradeable digital ide  ntity with tenzorum! Get yours at 👉 &url=https://tenzorum.org/tenz_id&hashtags=blockchain,tenzorum&\n')
+    window.open('http://twitter.com/share?text=🎉I just claimed my UNSTOPABBLE Blockchain Digital Identity with TENZ-ID 🚀@tenzorum! Get yours at  👉 &url=https://tenzorum.org/tenz_id&hashtags=blockchain,tenzorum,digitalidentity&\n')
   })
-  $('#updateh1 > div > div > h1 > span').html(`Congratulations ${localStorage.ensName} ! You have successfully claimed your TENZ-ID: <br/> 🎉${localStorage.ensName}.tenz-id.xyz 🎉`);
-  $('#update2 > div > div >  h3 > span').html(`👉 It's immutably stored in the Ethereum Blockchain and can be viewed <a href="https://ropsten.etherscan.io/tx/${localStorage.txHash}" target="_blank"><b><u>HERE</u></b></a>`);
+  $('#updateh1 > div > div > h1 > span').html(`Congratulations ${localStorage.ensName}! You have successfully claimed your TENZ-ID: <br/> 🎉${localStorage.ensName}.tenz-id.xyz 🎉`);
+  $('#update2 > div > div >  h3 > span').html(`👉 It's immutably stored in the Ethereum Blockchain and can be viewed <a href="https://etherscan.io/tx/${localStorage.txHash}" target="_blank"><b><u>HERE</u></b></a>`);
 }
