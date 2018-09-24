@@ -1,12 +1,16 @@
 const factoryAbi = [{"anonymous":false,"inputs":[],"name":"DomainTransfersLocked","type":"event"},{"constant":false,"inputs":[],"name":"lockDomainOwnershipTransfers","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_subdomain","type":"string"},{"name":"_domain","type":"string"},{"name":"_topdomain","type":"string"},{"name":"_owner","type":"address"},{"name":"_target","type":"address"}],"name":"newSubdomain","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"previousRegistry","type":"address"},{"indexed":true,"name":"newRegistry","type":"address"}],"name":"RegistryUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"previousOwner","type":"address"},{"indexed":true,"name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"creator","type":"address"},{"indexed":true,"name":"owner","type":"address"},{"indexed":false,"name":"subdomain","type":"string"},{"indexed":false,"name":"domain","type":"string"},{"indexed":false,"name":"topdomain","type":"string"}],"name":"SubdomainCreated","type":"event"},{"constant":false,"inputs":[{"name":"_owner","type":"address"}],"name":"transferContractOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"previousResolver","type":"address"},{"indexed":true,"name":"newResolver","type":"address"}],"name":"ResolverUpdated","type":"event"},{"constant":false,"inputs":[{"name":"_node","type":"bytes32"},{"name":"_owner","type":"address"}],"name":"transferDomainOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_registry","type":"address"}],"name":"updateRegistry","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_resolver","type":"address"}],"name":"updateResolver","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_registry","type":"address"},{"name":"_resolver","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[{"name":"_domain","type":"string"},{"name":"_topdomain","type":"string"}],"name":"domainOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"locked","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"registry","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"resolver","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_subdomain","type":"string"},{"name":"_domain","type":"string"},{"name":"_topdomain","type":"string"}],"name":"subdomainOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_subdomain","type":"string"},{"name":"_domain","type":"string"},{"name":"_topdomain","type":"string"}],"name":"subdomainTarget","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"}];
 const emptyAddress = '0x0000000000000000000000000000000000000000';
-const factoryAddress = "0xe47405AF3c470e91a02BFC46921C3632776F9C6b"; //mainnet
-// const factoryAddress = "0x62d6c93df120fca09a08258f3a644b5059aa12f0"; //ropsten
+// const factoryAddress = "0xe47405AF3c470e91a02BFC46921C3632776F9C6b"; //mainnet
+const factoryAddress = "0x62d6c93df120fca09a08258f3a644b5059aa12f0"; //ropsten
 let currentAccount;
 let ensName;
 let ensAddress;
 let ensContract;
 let addressAvailable = false;
+let gasPrice;
+fetch('https://ethgasstation.info/json/ethgasAPI.json')
+  .then(res => res.json())
+  .then(json => gasPrice = json);
 
 window.addEventListener('load', function() {
   if(window.location.href.indexOf("tenz_id") > -1) {
@@ -21,7 +25,6 @@ window.addEventListener('load', function() {
             break
           case "3":
             alert("Switch to mainnet on your wallet")
-
             break
           default:
             alert("Switch to mainnet on your wallet")
@@ -141,7 +144,7 @@ function checkENS(input) {
 }
 
 function checkPublicAddress(input) {
-  if (!/^(0x)?[0-9a-f]{40}$/i.test(input)) {
+  if (Eth.isAddress(input) === false) {
     $('#pa-status-wrapper').html("Invalid address");
     $('#pa-status-wrapper').css('background-color', '#e8b0b4');
     $('#pa-status-wrapper').css('color', '#b3323b');
@@ -150,14 +153,14 @@ function checkPublicAddress(input) {
     $('#pa-status-wrapper').css('border-radius', '10px');
     $("#register-tenz-id-button").attr("disabled", true);
     return false;
-  } else if (/^(0x)?[0-9a-f]{40}$/.test(input) || /^(0x)?[0-9A-F]{40}$/.test(input)) {
+  } else if (Eth.isAddress(input) === true) {
     $('#pa-status-wrapper').html("Valid address");
     $('#pa-status-wrapper').css('background-color', '#c9e8bd');
     $('#pa-status-wrapper').css('color', '#348432');
     $('#pa-status-wrapper').css('margin-top', '15px');
     $('#pa-status-wrapper').css('padding', '10px');
     $('#pa-status-wrapper').css('border-radius', '10px');
-    $("#register-tenz-id-button").attr("disabled", true);
+    $("#register-tenz-id-button").attr("disabled", false);
     return true;
   }
   ensAddress = input;
@@ -166,7 +169,7 @@ function checkPublicAddress(input) {
 function listenForClicks () {
   var button = document.getElementById('register-tenz-id-button');
   button.addEventListener('click', function() {
-    ensContract.newSubdomain(ensName, 'tenz-id', 'xyz', currentAccount, currentAccount, {from: currentAccount})
+    ensContract.newSubdomain(ensName, 'tenz-id', 'xyz', currentAccount, currentAccount, {from: currentAccount, gasPrice:(gasPrice.fast + 2)*1000000000})
       .then((txHash) => {
         localStorage.setItem('ensName', ensName);
         localStorage.setItem('txHash', txHash);
@@ -185,6 +188,6 @@ function confirmationPageTenz() {
     // Change this to tweet a different message, after text=put message here after &url=put url here after &hashtags=put hashtags here
     window.open('http://twitter.com/share?text=🎉I just claimed my UNSTOPABBLE Blockchain Digital Identity with TENZ-ID 🚀@tenzorum! Get yours at  👉 &url=https://tenzorum.org/tenz_id&hashtags=blockchain,tenzorum,digitalidentity&\n')
   })
-  $('#updateh1 > div > div > h1 > span').html(`Congratulations ${localStorage.ensName}! You have successfully claimed your TENZ-ID: <br/> 🎉${localStorage.ensName}.tenz-id.xyz 🎉`);
+  $('#updateh1 > div > div > h1 > span').html(`Congratulations ${localStorage.ensName}! You have submitted a claim for your TENZ-ID: <br/> 🎉${localStorage.ensName}.tenz-id.xyz 🎉 <br/> View the status of your claim <a href="https://etherscan.io/tx/${localStorage.txHash}" target="_blank"><b><u>here</u></b></a>`);
   $('#update2 > div > div >  h3 > span').html(`👉 It's immutably stored in the Ethereum Blockchain and can be viewed <a href="https://etherscan.io/tx/${localStorage.txHash}" target="_blank"><b><u>HERE</u></b></a>`);
 }
