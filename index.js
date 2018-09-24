@@ -10,7 +10,7 @@ let addressAvailable = false;
 let gasPrice;
 fetch('https://ethgasstation.info/json/ethgasAPI.json')
   .then(res => res.json())
-  .then(json => gasPrice = json);
+  .then(json => gasPrice = json)
 
 window.addEventListener('load', function() {
   if(window.location.href.indexOf("tenz_id") > -1) {
@@ -169,7 +169,7 @@ function checkPublicAddress(input) {
 function listenForClicks () {
   var button = document.getElementById('register-tenz-id-button');
   button.addEventListener('click', function() {
-    ensContract.newSubdomain(ensName, 'tenz-id', 'xyz', currentAccount, currentAccount, {from: currentAccount, gasPrice:(gasPrice.fast + 2)*1000000000})
+    ensContract.newSubdomain(ensName, 'tenz-id', 'xyz', currentAccount, currentAccount, {from: currentAccount, gasPrice:(gasPrice.fast+20)*100000000})
       .then((txHash) => {
         localStorage.setItem('ensName', ensName);
         localStorage.setItem('txHash', txHash);
