@@ -40,11 +40,12 @@ window.addEventListener('load', function() {
 })
 
 function startApp(web3) {
-  const eth = new Eth(web3.currentProvider)
+  const eth = new window.Eth(web3.currentProvider)
 
   listenForClicks(ensContract,web3);
   web3.eth.getAccounts(function(err, accounts) {
     if (accounts.length !== 0) {
+      ensAddress = accounts[0];
       currentAccount = accounts[0];
       checkPublicAddress(accounts[0]);
       $('#public-address').val(accounts[0]);
@@ -90,7 +91,7 @@ function checkENS(input) {
           .mouseout(function() {
             $(this).css("background-color", "#FC1272")
           })
-      } else if(addr[0] === currentAccount) {
+      } else if(addr[0] === ensAddress) {
         addressAvailable = false;
         $('#ens-status-wrapper').html("You have claimed this already!");
         $('#ens-status-wrapper').css('background-color', '#d4d1e8');
@@ -169,7 +170,7 @@ function checkPublicAddress(input) {
 function listenForClicks () {
   var button = document.getElementById('register-tenz-id-button');
   button.addEventListener('click', function() {
-    ensContract.newSubdomain(ensName, 'tenz-id', 'xyz', currentAccount, currentAccount, {from: currentAccount, gasPrice:(gasPrice.fast+20)*100000000})
+    ensContract.newSubdomain(ensName, 'tenz-id', 'xyz', ensAddress, ensAddress, {from: currentAccount, gasPrice:(gasPrice.fast+20)*100000000})
       .then((txHash) => {
         localStorage.setItem('ensName', ensName);
         localStorage.setItem('txHash', txHash);
