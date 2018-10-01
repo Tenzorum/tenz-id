@@ -48,7 +48,7 @@ function startApp(web3) {
       ensAddress = accounts[0];
       currentAccount = accounts[0];
       checkPublicAddress(accounts[0]);
-      $('#public-address').val(accounts[0]);
+      jQuery('#public-address').val(accounts[0]);
     } else {
       alert("Unlock or setup your metamask")
     }
@@ -57,12 +57,12 @@ function startApp(web3) {
 }
 
 function checkENS(input) {
-  $('.tenz-ens').val(input.toLowerCase())
+  jQuery('.tenz-ens').val(input.toLowerCase())
   if (input.length === 0) {
-    $('#ens-status-wrapper').css('background-color', '#d4d1e8');
-    $('#ens-status-wrapper').css('color', '#6963b3');
-    $('#ens-status-wrapper').html("Enter a valid username");
-    $("#register-tenz-id-button").attr("disabled", true);
+    jQuery('#ens-status-wrapper').css('background-color', '#d4d1e8');
+    jQuery('#ens-status-wrapper').css('color', '#6963b3');
+    jQuery('#ens-status-wrapper').html("Enter a valid username");
+    jQuery("#register-tenz-id-button").attr("disabled", true);
     return;
   }
   ensName = input.toLowerCase();
@@ -70,7 +70,7 @@ function checkENS(input) {
     .then(function (addr) {
       if(addr[0] === emptyAddress){
         addressAvailable = true;
-        $('#ens-status-wrapper')
+        jQuery('#ens-status-wrapper')
           .html("It's available! Go for it tiger!")
           .css({
             'background-color':'#c9e8bd',
@@ -79,65 +79,65 @@ function checkENS(input) {
             'padding':'10px',
             'border-radius':'10px'
           });
-        $('#register-tenz-id-button')
+        jQuery('#register-tenz-id-button')
           .css('border-radius', '10px')
           .attr({
             "disabled": false,
             "cursor":"pointer"
           })
           .mouseover(function() {
-            $(this).css("background-color", "#6963b3")
+            jQuery(this).css("background-color", "#6963b3")
           })
           .mouseout(function() {
-            $(this).css("background-color", "#FC1272")
+            jQuery(this).css("background-color", "#FC1272")
           })
       } else if(addr[0] === ensAddress) {
         addressAvailable = false;
-        $('#ens-status-wrapper').html("You have claimed this already!");
-        $('#ens-status-wrapper').css('background-color', '#d4d1e8');
-        $('#ens-status-wrapper').css('color', '#6963b3');
-        $('#ens-status-wrapper').css('margin-top', '15px');
-        $('#ens-status-wrapper').css('padding', '10px');
-        $('#ens-status-wrapper').css('border-radius', '10px');
-        $("#register-tenz-id-button")
+        jQuery('#ens-status-wrapper').html("You have claimed this already!");
+        jQuery('#ens-status-wrapper').css('background-color', '#d4d1e8');
+        jQuery('#ens-status-wrapper').css('color', '#6963b3');
+        jQuery('#ens-status-wrapper').css('margin-top', '15px');
+        jQuery('#ens-status-wrapper').css('padding', '10px');
+        jQuery('#ens-status-wrapper').css('border-radius', '10px');
+        jQuery("#register-tenz-id-button")
           .attr("disabled", true)
           .mouseover(function() {
-            $(this).css("background-color", "#9e9e9e")
+            jQuery(this).css("background-color", "#9e9e9e")
           })
           .mouseout(function() {
-            $(this).css("background-color", "#FC1272")
+            jQuery(this).css("background-color", "#FC1272")
           })
       } else if(addr[0] === '0x') {
         addressAvailable = false;
-        $('#ens-status-wrapper').html("Switch to mainnet");
-        $('#ens-status-wrapper').css('background-color', '#e8b0b4');
-        $('#ens-status-wrapper').css('color', '#b3323b');
-        $('#ens-status-wrapper').css('margin-top', '15px');
-        $('#ens-status-wrapper').css('padding', '10px');
-        $('#ens-status-wrapper').css('border-radius', '10px');
-        $("#register-tenz-id-button")
+        jQuery('#ens-status-wrapper').html("Switch to mainnet");
+        jQuery('#ens-status-wrapper').css('background-color', '#e8b0b4');
+        jQuery('#ens-status-wrapper').css('color', '#b3323b');
+        jQuery('#ens-status-wrapper').css('margin-top', '15px');
+        jQuery('#ens-status-wrapper').css('padding', '10px');
+        jQuery('#ens-status-wrapper').css('border-radius', '10px');
+        jQuery("#register-tenz-id-button")
           .attr("disabled", true)
           .mouseover(function() {
-            $(this).css("background-color", "#9e9e9e")
+            jQuery(this).css("background-color", "#9e9e9e")
           })
           .mouseout(function() {
-            $(this).css("background-color", "#FC1272")
+            jQuery(this).css("background-color", "#FC1272")
           })
       } else {
         addressAvailable = false;
-        $('#ens-status-wrapper').html("Oops! Already owned by: " + addr[0]);
-        $('#ens-status-wrapper').css('background-color', '#e8b0b4');
-        $('#ens-status-wrapper').css('color', '#b3323b');
-        $('#ens-status-wrapper').css('margin-top', '15px');
-        $('#ens-status-wrapper').css('padding', '10px');
-        $('#ens-status-wrapper').css('border-radius', '10px');
-        $("#register-tenz-id-button")
+        jQuery('#ens-status-wrapper').html("Oops! Already owned by: " + addr[0]);
+        jQuery('#ens-status-wrapper').css('background-color', '#e8b0b4');
+        jQuery('#ens-status-wrapper').css('color', '#b3323b');
+        jQuery('#ens-status-wrapper').css('margin-top', '15px');
+        jQuery('#ens-status-wrapper').css('padding', '10px');
+        jQuery('#ens-status-wrapper').css('border-radius', '10px');
+        jQuery("#register-tenz-id-button")
           .attr("disabled", true)
           .mouseover(function() {
-            $(this).css("background-color", "#9e9e9e")
+            jQuery(this).css("background-color", "#9e9e9e")
           })
           .mouseout(function() {
-            $(this).css("background-color", "#FC1272")
+            jQuery(this).css("background-color", "#FC1272")
           })
       }
     })
@@ -146,22 +146,22 @@ function checkENS(input) {
 
 function checkPublicAddress(input) {
   if (Eth.isAddress(input) === false) {
-    $('#pa-status-wrapper').html("Invalid address");
-    $('#pa-status-wrapper').css('background-color', '#e8b0b4');
-    $('#pa-status-wrapper').css('color', '#b3323b');
-    $('#pa-status-wrapper').css('margin-top', '15px');
-    $('#pa-status-wrapper').css('padding', '10px');
-    $('#pa-status-wrapper').css('border-radius', '10px');
-    $("#register-tenz-id-button").attr("disabled", true);
+    jQuery('#pa-status-wrapper').html("Invalid address");
+    jQuery('#pa-status-wrapper').css('background-color', '#e8b0b4');
+    jQuery('#pa-status-wrapper').css('color', '#b3323b');
+    jQuery('#pa-status-wrapper').css('margin-top', '15px');
+    jQuery('#pa-status-wrapper').css('padding', '10px');
+    jQuery('#pa-status-wrapper').css('border-radius', '10px');
+    jQuery("#register-tenz-id-button").attr("disabled", true);
     return false;
   } else if (Eth.isAddress(input) === true) {
-    $('#pa-status-wrapper').html("Valid address");
-    $('#pa-status-wrapper').css('background-color', '#c9e8bd');
-    $('#pa-status-wrapper').css('color', '#348432');
-    $('#pa-status-wrapper').css('margin-top', '15px');
-    $('#pa-status-wrapper').css('padding', '10px');
-    $('#pa-status-wrapper').css('border-radius', '10px');
-    $("#register-tenz-id-button").attr("disabled", false);
+    jQuery('#pa-status-wrapper').html("Valid address");
+    jQuery('#pa-status-wrapper').css('background-color', '#c9e8bd');
+    jQuery('#pa-status-wrapper').css('color', '#348432');
+    jQuery('#pa-status-wrapper').css('margin-top', '15px');
+    jQuery('#pa-status-wrapper').css('padding', '10px');
+    jQuery('#pa-status-wrapper').css('border-radius', '10px');
+    jQuery("#register-tenz-id-button").attr("disabled", false);
     return true;
   }
   ensAddress = input;
@@ -181,7 +181,7 @@ function listenForClicks () {
 }
 
 function confirmationPageTenz() {
-  // $('.ua-icon.ua-icon-twitter-2').click(function() {
+  // jQuery('.ua-icon.ua-icon-twitter-2').click(function() {
   //   window.open('http://twitter.com/share?text=Wah gwan my youth. Represent the most high, I and I with a share pon d tweetah &url=https://tenzorum.org/tenz_id&hashtags=blockchain,tenzorum&\n')
   // })
   var twitterButton = document.getElementById('twitter-tenzorum-button');
@@ -189,6 +189,6 @@ function confirmationPageTenz() {
     // Change this to tweet a different message, after text=put message here after &url=put url here after &hashtags=put hashtags here
     window.open('http://twitter.com/share?text=🎉I just claimed my UNSTOPABBLE Blockchain Digital Identity with TENZ-ID 🚀@tenzorum! Get yours at  👉 &url=https://tenzorum.org/tenz_id&hashtags=blockchain,tenzorum,digitalidentity&\n')
   })
-  $('#updateh1 > div > div > h1 > span').html(`Congratulations ${localStorage.ensName}! You have submitted a claim for your TENZ-ID: <br/> 🎉${localStorage.ensName}.tenz-id.xyz 🎉 <br/> View the status of your claim <a href="https://etherscan.io/tx/${localStorage.txHash}" target="_blank"><b><u>here</u></b></a>`);
-  $('#update2 > div > div >  h3 > span').html(`👉 It's immutably stored in the Ethereum Blockchain and can be viewed <a href="https://etherscan.io/tx/${localStorage.txHash}" target="_blank"><b><u>HERE</u></b></a>`);
+  jQuery('#updateh1 > div > div > h1 > span').html(`Congratulations ${localStorage.ensName}! You have submitted a claim for your TENZ-ID: <br/> 🎉${localStorage.ensName}.tenz-id.xyz 🎉 <br/> View the status of your claim <a href="https://etherscan.io/tx/${localStorage.txHash}" target="_blank"><b><u>here</u></b></a>`);
+  jQuery('#update2 > div > div >  h3 > span').html(`👉 It's immutably stored in the Ethereum Blockchain and can be viewed <a href="https://etherscan.io/tx/${localStorage.txHash}" target="_blank"><b><u>HERE</u></b></a>`);
 }
