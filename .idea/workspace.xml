@@ -72,6 +72,7 @@
       <change afterPath="$PROJECT_DIR$/../assets/tenzorum_ios_logo.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../assets/tenzorum_login_pitch.xd" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../backend/now.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../easy_gasless/src/Tenz_logo.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../key_recovery/Dockerfile" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../key_recovery/Momentum.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../key_recovery/README.md" afterDir="false" />
@@ -162,6 +163,7 @@
       <change beforePath="$PROJECT_DIR$/../package-lock.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../rn-cli.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -176,12 +178,13 @@
     <session id="575249177">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
-          <entry key="project.open.time.0" value="5" />
+          <entry key="project.closed" value="7" />
+          <entry key="project.open.time.0" value="6" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.13" value="1" />
+          <entry key="project.open.time.13" value="2" />
+          <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -221,8 +224,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2880">
-              <caret line="192" column="155" selection-start-line="192" selection-start-column="154" selection-end-line="192" selection-end-column="155" />
+            <state relative-caret-position="47">
+              <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -248,9 +251,13 @@
       <find>public</find>
       <find>subdomainTar</find>
       <find>subdomainTarget</find>
+      <find>$</find>
+      <find>ensContract</find>
+      <find>ensAddress</find>
     </findStrings>
     <replaceStrings>
       <replace>register-tenz-id-button</replace>
+      <replace>jQuery(</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -271,11 +278,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-271" />
-    <option name="y" value="-1177" />
-    <option name="width" value="1920" />
-    <option name="height" value="1177" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -283,7 +289,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -295,6 +300,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -336,18 +342,19 @@
       <workItem from="1537746996941" duration="465000" />
       <workItem from="1537753525901" duration="3405000" />
       <workItem from="1537763797295" duration="2603000" />
-      <workItem from="1538370597959" duration="210000" />
+      <workItem from="1538370597959" duration="2785000" />
+      <workItem from="1538853351637" duration="3936000" />
+      <workItem from="1538922098659" duration="3144000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53955000" />
+    <option name="totallyTimeSpent" value="63610000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-271" y="-1177" width="1920" height="1177" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1440" height="877" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15761448" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22031474" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -383,8 +390,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2880">
-          <caret line="192" column="155" selection-start-line="192" selection-start-column="154" selection-end-line="192" selection-end-column="155" />
+        <state relative-caret-position="47">
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
         </state>
       </provider>
     </entry>
