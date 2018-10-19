@@ -107,7 +107,7 @@ body {
     color: white;
     border: none;
     font-size: 20px;
-    cursor:pointer;
+    cursor:not-allowed  ;
 }
 
 .metamask-form #register-tenz-id-button:hover {

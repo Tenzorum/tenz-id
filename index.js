@@ -10,7 +10,7 @@ let addressAvailable = false;
 let gasPrice;
 fetch('https://ethgasstation.info/json/ethgasAPI.json')
   .then(res => res.json())
-  .then(json => gasPrice = json)
+  .then(json => gasPrice = json);
 
 window.addEventListener('load', function() {
   if(window.location.href.indexOf("tenz_id") > -1) {
@@ -32,7 +32,7 @@ window.addEventListener('load', function() {
       })
       startApp(web3);
     } else {
-      alert('You need metamask or use a mobile wallet Dapp browser to use tenz-id. Download from https://metamask.io');
+      alert('You need metamask or use a mobile wallet Dapp browser to use tenzID. Download from https://metamask.io');
     }
   } else if(window.location.href.indexOf("confirmation") > -1) {
     confirmationPageTenz()
@@ -66,7 +66,7 @@ function checkENS(input) {
     return;
   }
   ensName = input.toLowerCase();
-  ensContract.subdomainOwner(input, 'tenz-id', 'xyz')
+  ensContract.subdomainOwner(input, 'tenzorum-id', 'eth')
     .then(function (addr) {
       if(addr[0] === emptyAddress){
         addressAvailable = true;
@@ -170,7 +170,7 @@ function checkPublicAddress(input) {
 function listenForClicks () {
   var button = document.getElementById('register-tenz-id-button');
   button.addEventListener('click', function() {
-    ensContract.newSubdomain(ensName, 'tenz-id', 'xyz', ensAddress, ensAddress, {from: currentAccount, gasPrice:(gasPrice.fast+20)*100000000})
+    ensContract.newSubdomain(ensName, 'tenzorum-id', 'eth', ensAddress, ensAddress, {from: currentAccount, gasPrice:(gasPrice.fast+20)*100000000})
       .then((txHash) => {
         localStorage.setItem('ensName', ensName);
         localStorage.setItem('txHash', txHash);
@@ -189,6 +189,6 @@ function confirmationPageTenz() {
     // Change this to tweet a different message, after text=put message here after &url=put url here after &hashtags=put hashtags here
     window.open('http://twitter.com/share?text=🎉I just claimed my UNSTOPABBLE Blockchain Digital Identity with TENZ-ID 🚀@tenzorum! Get yours at  👉 &url=https://tenzorum.org/tenz_id&hashtags=blockchain,tenzorum,digitalidentity&\n')
   })
-  jQuery('#updateh1 > div > div > h1 > span').html(`Congratulations ${localStorage.ensName}! You have submitted a claim for your TENZ-ID: <br/> 🎉${localStorage.ensName}.tenz-id.xyz 🎉 <br/> View the status of your claim <a href="https://etherscan.io/tx/${localStorage.txHash}" target="_blank"><b><u>here</u></b></a>`);
+  jQuery('#updateh1 > div > div > h1 > span').html(`Congratulations ${localStorage.ensName}! You have submitted a claim for your TENZ-ID: <br/> 🎉${localStorage.ensName}.tenzorum-id.eth 🎉 <br/> View the status of your claim <a href="https://etherscan.io/tx/${localStorage.txHash}" target="_blank"><b><u>here</u></b></a>`);
   jQuery('#update2 > div > div >  h3 > span').html(`👉 It's immutably stored in the Ethereum Blockchain and can be viewed <a href="https://etherscan.io/tx/${localStorage.txHash}" target="_blank"><b><u>HERE</u></b></a>`);
 }
